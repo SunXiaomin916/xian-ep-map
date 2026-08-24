@@ -1,0 +1,8 @@
+# 以下文件不进入公开版本
+*.xlsx
+*.xls
+*.csv
+raw_traffic_lbs.json
+final_coords.json
+classify_result.json
+node_modules/
