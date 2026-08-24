@@ -114,7 +114,7 @@ html,body{margin:0;padding:0;height:100%;font-family:-apple-system,"Segoe UI","M
       <div class="nav-content" id="navContent">
         <div class="nav-row"><label>起点</label><input id="navStart" placeholder="输入地址，或点右侧地图选点"><button id="pickStart" class="mini">地图选点</button></div>
         <div class="nav-row"><label>终点</label><input id="navEnd" placeholder="输入地址，或点右侧地图选点"><button id="pickEnd" class="mini">地图选点</button></div>
-        <div class="nav-mode"><button id="modeNormal" class="active">正常导航</button><button id="modeAvoid">避开限行监控</button></div>
+        <div class="nav-mode"><button id="modeNormal" class="active">正常导航</button><button id="modeAvoid">少经限行点位</button></div>
         <div class="nav-restrict">
           <div class="nr-title">尾号限行查询</div>
           <div class="nav-row"><label>车牌号</label><input id="plateInput" placeholder="如 陕A12345"><button id="plateCheck" class="mini">查询</button></div>
@@ -158,7 +158,7 @@ html,body{margin:0;padding:0;height:100%;font-family:-apple-system,"Segoe UI","M
     <div id="list" class="list"></div>
       </div>
     </div>
-    <div class="ft">数据来源：西安交警微信服务号——电子警察分布告知 · 状态码含义官网未公开，仅作筛选 · 坐标已统一转换为百度 BD-09 · 有 <b id="badCount">0</b> 条坐标异常点位仅列表展示不落图</div>
+    <div class="ft">数据来源：西安交警微信服务号——电子警察分布告知<br>本工具非官方出品，仅供学习参考；请自觉遵守道路交通安全法规<br>坐标已统一转换为百度 BD-09 · 有 <b id="badCount">0</b> 条坐标异常点位仅列表展示不落图</div>
   </aside>
   <div id="map"></div>
 </div>
@@ -561,7 +561,7 @@ function renderRoute(chosen, normalRoute, avoidRoute, altCount){
     map.addOverlay(circle); NAV.overlays.push(circle);
   }
   var res = document.getElementById('navResult');
-  var html = '<div class="nr-line">模式：<b>' + (NAV.mode==='avoid' ? '避开限行监控' : '正常导航') + '</b>（候选路线 ' + altCount + ' 条）</div>'
+  var html = '<div class="nr-line">模式：<b>' + (NAV.mode==='avoid' ? '少经限行点位' : '正常导航') + '</b>（候选路线 ' + altCount + ' 条）</div>'
     + '<div class="nr-line">距离：<b>' + esc(chosen.distStr) + '</b> · 用时：<b>' + esc(chosen.durStr) + '</b></div>'
     + '<div class="nr-line">途经限行监控：<b class="red">' + chosen.cams.length + '</b> 个（全市共 ' + XIANXING_CAMS.length + ' 个限行点位）</div>';
   if (NAV.mode === 'avoid' && avoidRoute && normalRoute){
@@ -577,7 +577,7 @@ function renderRoute(chosen, normalRoute, avoidRoute, altCount){
     html += '</div>';
   }
   if (plateIsRestricted()) html += '<div class="nr-line" style="color:#d97706">提示：您的车牌今日限行，本路线仅供参考（不作强制）</div>';
-  html += '<div class="nr-tip">蓝色=正常路线 · 绿色=避开路线 · 红色圆圈=途经限行监控点位（点击下方列表可定位）</div>';
+  html += '<div class="nr-tip">蓝色=正常路线 · 绿色=少经限行点位路线 · 红色圆圈=途经限行监控点位（点击下方列表可定位）</div>';
   res.innerHTML = html; res.style.display = 'block';
   var items = res.querySelectorAll('.nr-item[data-fid]');
   for (var m=0;m<items.length;m++){
