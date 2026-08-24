@@ -47,16 +47,3 @@
 （西安交警微信服务号——电子警察分布告知），**仅供学习、参考，不用于任何商业用途**；
 请自觉遵守道路交通安全法规，注意行车安全。
 坐标已统一转换为百度 BD-09；限行规则与数据以官方最新通告为准。
-
-
-## 部署到 GitHub Pages
-
-1. 注册/登录 [GitHub](https://github.com)，新建一个仓库（如 `xian-ep-map`）；
-2. 把本文件夹（`dist` 里的内容）上传到仓库根目录：
-   - 网页上传：仓库页面 → Add file → Upload files，拖入 `index.html`、`server.cjs`、`README.md`、`.nojekyll`；
-   - 或命令行：`git init && git add . && git commit -m "init" && git push`；
-3. 仓库 → Settings → Pages → Source 选 `main` 分支根目录 → Save；
-4. 几分钟后访问 `https://你的用户名.github.io/仓库名/` 即可（手机、电脑、任何联网设备都能打开）。
-
-> 注意：GitHub Pages 免费版要求仓库为公开；本项目数据为公开信息（西安交警微信服务号——电子警察分布告知），适合公开。
-> 百度地图 AK 建议在开放平台把 Referer 白名单加上 `https://你的用户名.github.io/*`，防止他人蹭用你的配额。
